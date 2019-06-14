@@ -14,7 +14,9 @@ exports.sourceNodes = async (
 ) => {
   try {
     if (firebase.apps || !firebase.apps.length) {
-      const cfg = appConfig ? appConfig : {credential: firebase.credential.cert(credential)}
+      const cfg = appConfig
+        ? appConfig
+        : { credential: firebase.credential.cert(credential) };
       firebase.initializeApp(cfg);
     }
   } catch (e) {
@@ -25,9 +27,6 @@ exports.sourceNodes = async (
     return;
   }
   const db = firebase.firestore();
-  db.settings({
-    timestampsInSnapshots: true,
-  });
 
   const { createNode } = boundActionCreators;
 
