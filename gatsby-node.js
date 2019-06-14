@@ -1,4 +1,3 @@
-const report = require('gatsby-cli/lib/reporter');
 const firebase = require('firebase-admin');
 const crypto = require('crypto');
 
@@ -20,10 +19,10 @@ exports.sourceNodes = async (
       firebase.initializeApp(cfg);
     }
   } catch (e) {
-    report.warn(
+    console.warn(
       'Could not initialize Firebase. Please check `credential` property in gatsby-config.js'
     );
-    report.warn(e);
+    console.warn(e);
     return;
   }
   const db = firebase.firestore();
